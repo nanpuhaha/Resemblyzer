@@ -38,7 +38,7 @@ embeds_a = np.array([encoder.embed_utterance(wavs[0]) for wavs in speaker_wavs.v
 embeds_b = np.array([encoder.embed_utterance(wavs[1]) for wavs in speaker_wavs.values()])
 # Each array is of shape (num_speakers, embed_size) which should be (10, 256) if you haven't 
 # changed anything.
-print("Shape of embeddings: %s" % str(embeds_a.shape))
+print(f"Shape of embeddings: {str(embeds_a.shape)}")
 
 # Compute the similarity matrix. The similarity of two embeddings is simply their dot 
 # product, because the similarity metric is the cosine similarity and the embeddings are 
@@ -66,8 +66,8 @@ spk_sim_matrix = np.inner(spk_embeds_a, spk_embeds_b)
 
 ## Draw the plots
 fix, axs = plt.subplots(2, 2, figsize=(8, 10))
-labels_a = ["%s-A" % i for i in speaker_wavs.keys()]
-labels_b = ["%s-B" % i for i in speaker_wavs.keys()]
+labels_a = [f"{i}-A" for i in speaker_wavs]
+labels_b = [f"{i}-B" for i in speaker_wavs]
 mask = np.eye(len(utt_sim_matrix), dtype=np.bool)
 plot_similarity_matrix(utt_sim_matrix, labels_a, labels_b, axs[0, 0],
                        "Cross-similarity between utterances\n(speaker_id-utterance_group)")

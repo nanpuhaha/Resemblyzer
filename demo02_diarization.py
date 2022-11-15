@@ -17,8 +17,8 @@ wav = preprocess_wav(wav_fpath)
 segments = [[0, 5.5], [6.5, 12], [17, 25]]
 speaker_names = ["Kyle Gass", "Sean Evans", "Jack Black"]
 speaker_wavs = [wav[int(s[0] * sampling_rate):int(s[1] * sampling_rate)] for s in segments]
-  
-    
+
+
 ## Compare speaker embeds to the continuous embedding of the interview
 # Derive a continuous embedding of the interview. We put a rate of 16, meaning that an 
 # embedding is generated every 0.0625 seconds. It is good to have a higher rate for speaker 
